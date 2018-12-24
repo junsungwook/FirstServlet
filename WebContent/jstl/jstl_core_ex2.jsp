@@ -16,7 +16,7 @@
 	<b>${alphabet }</b>&nbsp;
 </c:forTokens>
 <br>
-<c:set var="data" value="홍길동,김길동,고길동"/>
+<c:set var="data" value="홍길동,김길동,고길동,김원빈"/>
 <c:forTokens  var="varData" items="${data }" delims=",">
 	<b>${varData }</b>&nbsp;
 </c:forTokens>
