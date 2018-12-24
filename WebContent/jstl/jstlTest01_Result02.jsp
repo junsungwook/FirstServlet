@@ -8,30 +8,30 @@
 <title>여기에 제목을 입력하십시오</title>
 </head>
 <body>
-<c:if test="${param.id!=null }">
-	<b>${param.id }</b>
+<c:if test="${id!=null }">
+	<b>${id }</b>
 </c:if>
-<c:if test="${param.id==null || param.id==''}">
+<c:if test="${id==null || id==''}">
 	<b>Guest</b>
 </c:if>
 
 <c:choose>
-	<c:when test="${param.color=='yellow' }">
+	<c:when test="${color=='yellow' }">
 		<c:set var="c" value="노란색"/>
 	</c:when>
-	<c:when test="${param.color=='blue' }">
+	<c:when test="${color=='blue' }">
 		<c:set var="c" value="파란색"/>
 	</c:when>
-	<c:when test="${param.color=='orange' }">
+	<c:when test="${color=='orange' }">
 		<c:set var="c" value="오렌지색"/>
 	</c:when>
-	<c:when test="${param.color=='pink' }">
+	<c:when test="${color=='pink' }">
 		<c:set var="c" value="핑크"/>
 	</c:when>
 	<c:otherwise>
 		<c:set var="c" value="블랙"></c:set>
 	</c:otherwise>
 </c:choose>
-님이 좋아하는 색깔은 <font color="${param.color}">${c }</font>  입니다
+님이 좋아하는 색깔은 <font color="${color}">${c }</font>  입니다
 </body>
 </html>
