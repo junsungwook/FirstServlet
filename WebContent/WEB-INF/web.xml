@@ -40,6 +40,15 @@
   		<url-pattern>/exam/personInfo</url-pattern>
   	</servlet-mapping>
   	
+  	<servlet>
+	  <servlet-name>gogo1</servlet-name>
+	  <servlet-class>com.exam.PersonInfo1</servlet-class>
+  	</servlet>
+  	<servlet-mapping>
+  		<servlet-name>gogo1</servlet-name>
+  		<url-pattern>/exam/personInfo1</url-pattern>
+  	</servlet-mapping>
+  	
   	
   <welcome-file-list>
     <welcome-file>index.html</welcome-file>
