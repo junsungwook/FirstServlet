@@ -31,6 +31,7 @@
   		<url-pattern>/exam/bbs1</url-pattern>
   	</servlet-mapping>
   	
+  	
   	<servlet>
 	  <servlet-name>gogo</servlet-name>
 	  <servlet-class>com.exam.PersonInfo</servlet-class>
@@ -40,6 +41,7 @@
   		<url-pattern>/exam/personInfo</url-pattern>
   	</servlet-mapping>
   	
+  	
   	<servlet>
 	  <servlet-name>gogo1</servlet-name>
 	  <servlet-class>com.exam.PersonInfo1</servlet-class>
@@ -48,6 +50,7 @@
   		<servlet-name>gogo1</servlet-name>
   		<url-pattern>/exam/personInfo1</url-pattern>
   	</servlet-mapping>
+  	
   	
   	<servlet>
 	  <servlet-name>colorgogo</servlet-name>
