@@ -1,84 +1,70 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd" id="WebApp_ID" version="3.1">
   <display-name>FirstServlet</display-name>
-  
-	<servlet>
-	  <servlet-name>adder</servlet-name>
-	  <servlet-class>com.exam.Adder</servlet-class>
-  	</servlet>
-  	<servlet-mapping>
-  		<servlet-name>adder</servlet-name>
-  		<url-pattern>/exam/adder</url-pattern>
-  	</servlet-mapping>
-  	
-  	
-  	<servlet>
-	  <servlet-name>bbs</servlet-name>
-	  <servlet-class>com.exam.Bbs</servlet-class>
-  	</servlet>
-  	<servlet-mapping>
-  		<servlet-name>bbs</servlet-name>
-  		<url-pattern>/exam/bbs</url-pattern>
-  	</servlet-mapping>
-  	
-  	
-  	<servlet>
-	  <servlet-name>bbs1</servlet-name>
-	  <servlet-class>com.exam.Bbs1</servlet-class>
-  	</servlet>
-  	<servlet-mapping>
-  		<servlet-name>bbs1</servlet-name>
-  		<url-pattern>/exam/bbs1</url-pattern>
-  	</servlet-mapping>
-  	
-  	
-  	<servlet>
-	  <servlet-name>gogo</servlet-name>
-	  <servlet-class>com.exam.PersonInfo</servlet-class>
-  	</servlet>
-  	<servlet-mapping>
-  		<servlet-name>gogo</servlet-name>
-  		<url-pattern>/exam/personInfo</url-pattern>
-  	</servlet-mapping>
-  	
-  	
-  	<servlet>
-	  <servlet-name>gogo1</servlet-name>
-	  <servlet-class>com.exam.PersonInfo1</servlet-class>
-  	</servlet>
-  	<servlet-mapping>
-  		<servlet-name>gogo1</servlet-name>
-  		<url-pattern>/exam/personInfo1</url-pattern>
-  	</servlet-mapping>
-  	
-  	
-  	<servlet>
-	  <servlet-name>colorgogo</servlet-name>
-	  <servlet-class>com.jstl.JstlTest_Result</servlet-class>
-  	</servlet>
-  	<servlet-mapping>
-  		<servlet-name>colorgogo</servlet-name>
-  		<url-pattern>/jstl/jstlTest</url-pattern>
-  	</servlet-mapping>
-  	
-  	<servlet>
-	  <servlet-name>logingo</servlet-name>
-	  <servlet-class>com.exam.loginman</servlet-class>
-  	</servlet>
-  	<servlet-mapping>
-  		<servlet-name>logingo</servlet-name>
-  		<url-pattern>/exam/login</url-pattern>
-  	</servlet-mapping>
-  	
-  	<servlet>
-	  <servlet-name>geda</servlet-name>
-	  <servlet-class>com.exam.Dog</servlet-class>
-  	</servlet>
-  	<servlet-mapping>
-  		<servlet-name>geda</servlet-name>
-  		<url-pattern>/exam/choiceDog</url-pattern>
-  	</servlet-mapping>
-  	
+  <servlet>
+    <servlet-name>adder</servlet-name>
+    <servlet-class>com.exam.Adder</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>adder</servlet-name>
+    <url-pattern>/exam/adder</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>bbs</servlet-name>
+    <servlet-class>com.exam.Bbs</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>bbs</servlet-name>
+    <url-pattern>/exam/bbs</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>bbs1</servlet-name>
+    <servlet-class>com.exam.Bbs1</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>bbs1</servlet-name>
+    <url-pattern>/exam/bbs1</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>gogo</servlet-name>
+    <servlet-class>com.exam.PersonInfo</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>gogo</servlet-name>
+    <url-pattern>/exam/personInfo</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>gogo1</servlet-name>
+    <servlet-class>com.exam.PersonInfo1</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>gogo1</servlet-name>
+    <url-pattern>/exam/personInfo1</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>colorgogo</servlet-name>
+    <servlet-class>com.jstl.JstlTest_Result</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>colorgogo</servlet-name>
+    <url-pattern>/jstl/jstlTest</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>logingo</servlet-name>
+    <servlet-class>com.exam.loginman</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>logingo</servlet-name>
+    <url-pattern>/exam/login</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>geda</servlet-name>
+    <servlet-class>com.exam.Dog</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>geda</servlet-name>
+    <url-pattern>/exam/choiceDog</url-pattern>
+  </servlet-mapping>
   <welcome-file-list>
     <welcome-file>index.html</welcome-file>
     <welcome-file>index.htm</welcome-file>
