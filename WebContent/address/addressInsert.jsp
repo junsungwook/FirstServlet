@@ -7,26 +7,26 @@
 <title>여기에 제목을 입력하십시오</title>
 </head>
 <body>
-<a>전체보기</a><br>
+<a href="list.do">전체보기</a><br>
 주소록 등록하기
-<form>
+<form action="insert.do" method="post" name="frm">
 <table>
 	<tr>
 		<td>이름 : </td>
-		<td colspan="2"><input type="text" name="name"></td>
+		<td colspan="2"><input type="text" name="name" id="name"></td>
 	</tr>
 	<tr>
 		<td>우편번호 : </td>
-		<td><input type="text" name="addrnum"></td>
-		<td><input type="button" value="검색"></td>
+		<td><input type="text" name=zipcode id="zipcode"></td>
+		<td><input type="button" value="검색" onclick="zipfinder()"></td>
 	</tr>
 	<tr>
 		<td>주소 : </td>
-		<td colspan="2"><input type="text" name="addr"></td>
+		<td colspan="2"><input type="text" name="addr" id="addr"></td>
 	</tr>
 	<tr>
 		<td>전화번호 : </td>
-		<td colspan="2"><input type="text" name="tel"></td>
+		<td colspan="2"><input type="text" name="tel" id="tel"></td>
 	</tr>
 </table>
 <input type="submit" value="등록">
