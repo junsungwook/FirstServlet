@@ -27,12 +27,6 @@ $(document).ready(function(){
 
 		});
 	});
-	$("#dong").keydown(function(e){
-		if(e.keyCode==13){
-			sendIt();
-			return false;
-		}
-	});
 	$("#result").on("click","tr",function(){
 		//이떄 this는 tr을 의미
 		//"td:eq(e)"는 e번째의 td라는 뜻
