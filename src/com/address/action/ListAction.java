@@ -1,7 +1,9 @@
 package com.address.action;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -12,16 +14,16 @@ import com.address.model.AddressDAO;
 import com.address.model.AddressDTO;
 
 /**
- * Servlet implementation class InsertAction
+ * Servlet implementation class ListAction
  */
-@WebServlet("/address/insert.do")
-public class InsertAction extends HttpServlet {
+@WebServlet("/address/list.do")
+public class ListAction extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public InsertAction() {
+    public ListAction() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -30,19 +32,12 @@ public class InsertAction extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		 request.setCharacterEncoding("utf-8");
-		 String name = request.getParameter("name");
-		 String addr = request.getParameter("addr");
-		 String zipcode = request.getParameter("zipcode");
-		 String tel = request.getParameter("tel"); 
-		 AddressDTO ad = new AddressDTO();
-		 ad.setName(name);
-		 ad.setAddr(addr);
-		 ad.setTel(tel);
-		 ad.setZipcode(zipcode);
-		 AddressDAO dao = AddressDAO.getInstance();
-		 dao.addressInsert(ad);
-		 response.sendRedirect("list.do");
+		request.setCharacterEncoding("utf-8");
+		AddressDAO dao = AddressDAO.getInstance();
+		ArrayList<AddressDTO> ad = dao.addressList();
+		request.setAttribute("ad", ad);
+		RequestDispatcher rd = request.getRequestDispatcher("addressList.jsp");
+		rd.forward(request, response);
 	}
 
 	/**

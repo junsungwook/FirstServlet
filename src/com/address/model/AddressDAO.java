@@ -1,8 +1,11 @@
 package com.address.model;
 
+import java.sql.Statement;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 import javax.naming.Context;
 import javax.naming.InitialContext;
@@ -42,7 +45,69 @@ public class AddressDAO {
 		}
 
 	}
+	public ArrayList<AddressDTO> addressList() {
+		Connection con = null;
+		Statement st = null;
+		ResultSet rs = null;
+		ArrayList<AddressDTO> arr = new ArrayList<>();
+		try {
+			con = getConnection();
+			String sql = "select * from addressdb";
+			st = con.createStatement();
+			rs = st.executeQuery(sql);
+			while(rs.next()) {
+				AddressDTO ad = new AddressDTO();
+				ad.setNum(rs.getInt("num"));
+				ad.setName(rs.getString("name"));
+				ad.setAddr(rs.getString("addr"));
+				ad.setZipcode(rs.getString("zipcode"));
+				ad.setTel(rs.getString("tel"));
+				arr.add(ad);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			closeCon(con, st, rs);
+		}
+		return arr;
+	}
+	//우편번호 검색
+	public ArrayList<ZipcodeDTO> zipSearch(String dong) {
+		Connection con = null;
+		Statement st = null;
+		ResultSet rs = null;
+		ArrayList<ZipcodeDTO> arr = new ArrayList<>();
+		try {
+			con = getConnection();
+			String sql = "select * from zipcode where DONG like '%"+dong+"%'";
+			st = con.createStatement();
+			rs = st.executeQuery(sql);
+			while(rs.next()) {
+				ZipcodeDTO z = new ZipcodeDTO();
+				z.setZipcode(rs.getString("zipcode"));
+				z.setSido(rs.getString("sido"));
+				z.setGugun(rs.getString("gugun"));
+				z.setDong(rs.getString("dong"));
+				z.setBunji(rs.getString("bunji")); 
+				z.setSeq(rs.getInt("seq")); 
+				arr.add(z);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if(rs!=null)rs.close();
+				if(st!=null) st.close();
+				if(con!=null) con.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return arr;
+	}
+
 	private void closeCon(Connection con, PreparedStatement ps) {
+
 		try {
 			if(ps!=null) ps.close();
 			if(con!=null) con.close();
@@ -50,4 +115,15 @@ public class AddressDAO {
 			e.printStackTrace();
 		}
 	}
+	private void closeCon(Connection con, Statement st,ResultSet rs) {
+		try {
+			if(st!=null) st.close();
+			if(con!=null) con.close();
+			if(rs!=null) rs.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	
+	}
+
 }
