@@ -61,7 +61,14 @@
   		<url-pattern>/jstl/jstlTest</url-pattern>
   	</servlet-mapping>
   	
-  	
+  	<servlet>
+	  <servlet-name>logingo</servlet-name>
+	  <servlet-class>com.exam.loginman</servlet-class>
+  	</servlet>
+  	<servlet-mapping>
+  		<servlet-name>logingo</servlet-name>
+  		<url-pattern>/exam/login</url-pattern>
+  	</servlet-mapping>
   <welcome-file-list>
     <welcome-file>index.html</welcome-file>
     <welcome-file>index.htm</welcome-file>

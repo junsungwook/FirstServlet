@@ -21,6 +21,5 @@ public class JstlTest_Result extends HttpServlet{
 		resp.setContentType("text/html;charset=utf-8");
 		RequestDispatcher rd = req.getRequestDispatcher("jstlTest01_Result02.jsp");
 		rd.forward(req, resp);
-	
 	}
 }
