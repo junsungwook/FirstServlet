@@ -7,6 +7,14 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
 <title>여기에 제목을 입력하십시오</title>
+<script  src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script>
+$(document).ready(function(){
+	$("#searchBtn").click(function(){
+		location.href="search.do?what="+$('#what option:selected').val()+"&str="+$('#str').val();
+	});
+})
+</script>
 </head>
 <body>
 <div class="container">
@@ -21,13 +29,19 @@
 		<tbody>
 			<c:forEach items="${ad}" var="list">
 				<tr>	
-					<td>${list.name }</td>
+					<td><a href="view.do?num=${list.num}">${list.name }</a></td>
 					<td>${list.addr }</td>
 					<td>${list.tel }</td>
 				</tr>
 			</c:forEach>
 		</tbody>
 	</table>
+	<select id="what">
+	    <option value="name">이름</option>
+	    <option value="addr">주소</option>
+	</select>
+	<input type="text" name="search" id="str">
+	<input type="button" value="검색" id="searchBtn">
 </div>
 </body>
 </html>

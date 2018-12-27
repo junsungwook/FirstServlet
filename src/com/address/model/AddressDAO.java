@@ -105,6 +105,96 @@ public class AddressDAO {
 		}
 		return arr;
 	}
+	//삭제
+	public void addressDelete(int num) {
+		Connection con = null;
+		Statement st = null;
+		try {
+			con = getConnection();
+			st = con.createStatement();
+			String sql = "delete from addressdb where num="+num;
+			st.executeUpdate(sql);
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			closeCon(con,st);
+		}
+	}
+	//각각 검색하기
+	public ArrayList<AddressDTO> addressSearch(String what,String str) {
+		Connection con = null;
+		Statement st = null;
+		ResultSet rs = null;
+		ArrayList<AddressDTO> arr = new ArrayList<>();
+		try {
+			con = getConnection();
+			String sql = "select * from addressdb where "+what+" like '%"+str+"%'";
+			System.out.println(sql);
+			st = con.createStatement();
+			rs = st.executeQuery(sql);
+			while(rs.next()) {
+				AddressDTO ad = new AddressDTO();
+				ad.setNum(rs.getInt("num"));
+				ad.setName(rs.getString("name"));
+				ad.setAddr(rs.getString("addr"));
+				ad.setZipcode(rs.getString("zipcode"));
+				ad.setTel(rs.getString("tel"));
+				arr.add(ad);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			closeCon(con, st, rs);
+		}
+		return arr;
+	}
+
+	//수정
+	public void addressUpdate(AddressDTO ad) {
+		Connection con = null;
+		PreparedStatement ps = null;
+		try {
+			con = getConnection();
+			String sql = "update addressdb set name=?, addr=?, zipcode=?, tel=? where num=?";
+			ps = con.prepareStatement(sql);
+			ps.setString(1, ad.getName());
+			ps.setString(2, ad.getAddr());
+			ps.setString(3, ad.getZipcode());
+			ps.setString(4, ad.getTel());
+			ps.setInt(5, ad.getNum());
+			ps.execute();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			closeCon(con,ps);
+		}
+	}
+	//상세보기
+	public AddressDTO addressView(int num) {
+		Connection con = null;
+		Statement st = null;
+		ResultSet rs = null;
+		AddressDTO ad = null;
+		try {
+			con = getConnection();
+			String sql = "select * from addressdb where num="+num;
+			st = con.createStatement();
+			rs = st.executeQuery(sql);
+			while(rs.next()) {
+				ad = new AddressDTO();
+				ad.setNum(rs.getInt("num"));
+				ad.setName(rs.getString("name"));
+				ad.setAddr(rs.getString("addr"));
+				ad.setZipcode(rs.getString("zipcode"));
+				ad.setTel(rs.getString("tel"));
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			closeCon(con, st, rs);
+		}
+		return ad;
+	}
 
 	private void closeCon(Connection con, PreparedStatement ps) {
 
@@ -125,5 +215,14 @@ public class AddressDAO {
 		}
 	
 	}
+	private void closeCon(Connection con, Statement st) {
+		try {
+			if(st!=null) st.close();
+			if(con!=null) con.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+
 
 }

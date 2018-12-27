@@ -25,7 +25,7 @@ function zipfinder(){
 		<tr>
 			<td>우편번호 : </td>
 			<td><input type="text" name=zipcode id="zipcode"></td>
-			<td><input type="button" class="btn btn-default" value="검색" onclick="zipfinder()"></td>
+			<td><input type="button" class="btn btn-default" value="검색" onclick="zipfinder()" value="찾기"></td>
 		</tr>
 		<tr>
 			<td>주소 : </td>
@@ -36,8 +36,8 @@ function zipfinder(){
 			<td colspan="2"><input type="text" name="tel" id="tel"></td>
 		</tr>
 	</table>
-	<input type="submit" value="등록" class="btn btn-default">
-	<input type="reset" value="취소" class="btn btn-default">
+	<input type="submit" value="등록">
+	<input type="reset" value="취소">
 	</form>
 </div>
 </body>
