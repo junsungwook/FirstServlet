@@ -16,7 +16,6 @@ $(document).ready(function(){
 			url:"search.do", //갈 주소
 			data:{"what":$('#what option:selected').val(),"str":$('#str').val()}, //데이터
 			success:function(data){ //성공할 시 콜백함수
-				alert(data);
 				data = $.parseJSON(data);
 				var htmlStr="";
 				for(var i=0; i<data.length;i++){
@@ -26,7 +25,6 @@ $(document).ready(function(){
 					htmlStr +="<td>"+data[i].tel+"</td>";
 					htmlStr +="</tr>";
 				}
-				alert(htmlStr);
 				$("#result").html(htmlStr);
 			},
 			error:function(e){ // 에러일 시 콜백함수

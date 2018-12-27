@@ -38,9 +38,7 @@ public class SearchAction extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("utf-8");
 		String what = request.getParameter("what");
-		System.out.println(what);
 		String str = request.getParameter("str");
-		System.out.println(str);
 		AddressDAO dao = AddressDAO.getInstance();
 		ArrayList<AddressDTO> ad = dao.addressSearch(what,str);
 		JSONArray jarr = new JSONArray();
