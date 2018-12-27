@@ -21,7 +21,6 @@ $(document).ready(function(){
 			error:function(e){ // 에러일 시 콜백함수
 				alert("error : " + e);
 			}
-
 		});
 	});
 })
@@ -58,8 +57,6 @@ $(document).ready(function(){
 		<input type="text" name="search" id="str">
 		<input type="button" value="검색" id="searchBtn">
 	</div>	
-	
 </div>
-
 </body>
 </html>
