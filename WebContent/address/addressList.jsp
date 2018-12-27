@@ -11,7 +11,29 @@
 <script>
 $(document).ready(function(){
 	$("#searchBtn").click(function(){
-		location.href="search.do?what="+$('#what option:selected').val()+"&str="+$('#str').val();
+		$.ajax({
+			type:"post", //방식
+			url:"search.do", //갈 주소
+			data:{"what":$('#what option:selected').val(),"str":$('#str').val()}, //데이터
+			success:function(data){ //성공할 시 콜백함수
+				alert(data);
+				data = $.parseJSON(data);
+				var htmlStr="";
+				for(var i=0; i<data.length;i++){
+					htmlStr +="<tr>";
+					htmlStr +="<td>"+"<a href='view.do?num="+data[i].num+"'>"+data[i].name+"</a></td>";
+					htmlStr +="<td>"+data[i].addr+"</td>";
+					htmlStr +="<td>"+data[i].tel+"</td>";
+					htmlStr +="</tr>";
+				}
+				alert(htmlStr);
+				$("#result").html(htmlStr);
+			},
+			error:function(e){ // 에러일 시 콜백함수
+				alert("error : " + e);
+			}
+
+		});
 	});
 })
 </script>
@@ -26,7 +48,7 @@ $(document).ready(function(){
 				<th>전화번호</th>
 			</tr>
 		</thead>
-		<tbody>
+		<tbody id="result">
 			<c:forEach items="${ad}" var="list">
 				<tr>	
 					<td><a href="view.do?num=${list.num}">${list.name }</a></td>
@@ -36,6 +58,7 @@ $(document).ready(function(){
 			</c:forEach>
 		</tbody>
 	</table>
+	
 	<select id="what">
 	    <option value="name">이름</option>
 	    <option value="addr">주소</option>

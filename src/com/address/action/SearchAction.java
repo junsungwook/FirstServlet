@@ -1,6 +1,7 @@
 package com.address.action;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 
 import javax.servlet.RequestDispatcher;
@@ -9,6 +10,9 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
 
 import com.address.model.AddressDAO;
 import com.address.model.AddressDTO;
@@ -34,12 +38,24 @@ public class SearchAction extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("utf-8");
 		String what = request.getParameter("what");
+		System.out.println(what);
 		String str = request.getParameter("str");
+		System.out.println(str);
 		AddressDAO dao = AddressDAO.getInstance();
 		ArrayList<AddressDTO> ad = dao.addressSearch(what,str);
-		request.setAttribute("ad", ad);
-		RequestDispatcher rd = request.getRequestDispatcher("addressList.jsp");
-		rd.forward(request, response);
+		JSONArray jarr = new JSONArray();
+		for(AddressDTO z : ad){
+			JSONObject obj = new JSONObject();
+			obj.put("num",z.getNum());
+			obj.put("name",z.getName());
+			obj.put("addr",z.getAddr());
+			obj.put("zipcode",z.getZipcode());
+			obj.put("tel",z.getTel());
+			jarr.add(obj);
+		}
+		response.setContentType("text/html;charset=utf-8");
+		PrintWriter out = response.getWriter();
+		out.println(jarr.toString());
 	}
 
 	/**
