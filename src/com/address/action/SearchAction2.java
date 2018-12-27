@@ -56,9 +56,7 @@ public class SearchAction2 extends HttpServlet {
 		obj.put("count", count);
 		jarr.add(obj);
 		
-		response.setContentType("text/html;charset=utf-8");
-		PrintWriter out = response.getWriter();
-		out.println(jarr.toString());
+		
 	}
 
 	/**
