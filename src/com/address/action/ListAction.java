@@ -35,7 +35,9 @@ public class ListAction extends HttpServlet {
 		request.setCharacterEncoding("utf-8");
 		AddressDAO dao = AddressDAO.getInstance();
 		ArrayList<AddressDTO> ad = dao.addressList();
+		int count = dao.addressCount();
 		request.setAttribute("ad", ad);
+		request.setAttribute("count", count);
 		RequestDispatcher rd = request.getRequestDispatcher("addressList.jsp");
 		rd.forward(request, response);
 	}

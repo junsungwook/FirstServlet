@@ -20,14 +20,14 @@ import com.address.model.AddressDTO;
 /**
  * Servlet implementation class SearchAction
  */
-@WebServlet("/address/search.do")
-public class SearchAction extends HttpServlet {
+@WebServlet("/address/search2.do")
+public class SearchAction2 extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public SearchAction() {
+    public SearchAction2() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -42,10 +42,23 @@ public class SearchAction extends HttpServlet {
 		AddressDAO dao = AddressDAO.getInstance();
 		ArrayList<AddressDTO> ad = dao.addressSearch(what,str);
 		int count = dao.addressCount(what,str);
-		request.setAttribute("ad", ad);
-		request.setAttribute("count", count);
-		RequestDispatcher rd = request.getRequestDispatcher("searchResult.jsp");
-		rd.forward(request, response);
+		JSONArray jarr = new JSONArray();
+		for(AddressDTO z : ad){
+			JSONObject obj = new JSONObject();
+			obj.put("num",z.getNum());
+			obj.put("name",z.getName());
+			obj.put("addr",z.getAddr());
+			obj.put("zipcode",z.getZipcode());
+			obj.put("tel",z.getTel());
+			jarr.add(obj);
+		}
+		JSONObject obj = new JSONObject();
+		obj.put("count", count);
+		jarr.add(obj);
+		
+		response.setContentType("text/html;charset=utf-8");
+		PrintWriter out = response.getWriter();
+		out.println(jarr.toString());
 	}
 
 	/**

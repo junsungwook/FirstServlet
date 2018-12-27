@@ -5,31 +5,10 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
 <title>여기에 제목을 입력하십시오</title>
-<script  src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-<script>
-$(document).ready(function(){
-	$("#searchBtn").click(function(){
-		$.ajax({
-			type:"post", //방식
-			url:"search.do", //갈 주소
-			data:{"what":$('#what option:selected').val(),"str":$('#str').val()}, //데이터
-			success:function(data){ //성공할 시 콜백함수
-				$("#area").html(data);
-			},
-			error:function(e){ // 에러일 시 콜백함수
-				alert("error : " + e);
-			}
-
-		});
-	});
-})
-</script>
 </head>
 <body>
-<div id="area">
-	<div class="container">
+<div class="container">
 		<div align="center" id="count">
 			총 게시물 수 : ${count }
 		</div>
@@ -59,7 +38,5 @@ $(document).ready(function(){
 		<input type="button" value="검색" id="searchBtn">
 	</div>	
 	
-</div>
-
 </body>
 </html>

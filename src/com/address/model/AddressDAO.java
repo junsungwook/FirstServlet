@@ -148,6 +148,49 @@ public class AddressDAO {
 		}
 		return arr;
 	}
+	//카운트체크
+	public int addressCount() {
+		int count = 0;
+		Connection con = null;
+		Statement st = null;
+		ResultSet rs = null;
+		try {
+			con = getConnection();
+			st = con.createStatement();
+			String sql = "select count(*) from addressdb";
+			rs = st.executeQuery(sql);
+			//rs는 데이터 자체가 아니고 그 다음 값이 우리가 원하는 값이다
+			//그래서 한 칸짜리 값도 rs.next로 받아내야한다
+			if(rs.next())
+				count = rs.getInt(1);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			closeCon(con, st, rs);
+		}
+		return count;
+	}
+	public int addressCount(String what, String str) {
+		int count = 0;
+		Connection con = null;
+		Statement st = null;
+		ResultSet rs = null;
+		try {
+			con = getConnection();
+			st = con.createStatement();
+			String sql = "select count(*) from memberdb where "+what+" like '%"+str+"%'";
+			rs = st.executeQuery(sql);
+			//rs는 데이터 자체가 아니고 그 다음 값이 우리가 원하는 값이다
+			//그래서 한 칸짜리 값도 rs.next로 받아내야한다
+			if(rs.next())
+				count = rs.getInt(1);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			closeCon(con, st, rs);
+		}
+		return count;
+	}
 
 	//수정
 	public void addressUpdate(AddressDTO ad) {
